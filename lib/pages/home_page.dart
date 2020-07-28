@@ -48,8 +48,8 @@ class _HomePageState extends State<HomePage> {
                       text: 'It\'s Me',
                     ),
                     GButton(
-                      icon: LineIcons.heart_o,
-                      text: 'Contact',
+                      icon: LineIcons.group,
+                      text: 'Get in Touch',
                     ),
                     GButton(
                       icon: LineIcons.tasks,
