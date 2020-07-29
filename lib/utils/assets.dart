@@ -5,4 +5,5 @@ class Assets {
   static const linkedin = 'assets/linkedin.png';
   static const medium = 'assets/medium.png';
   static const twitter = 'assets/twitter.png';
+  static const pdfPath = 'assets/Resume.pdf';
 }

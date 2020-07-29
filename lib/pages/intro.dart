@@ -1,5 +1,9 @@
+import 'dart:html';
+import 'dart:ui';
+
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
 import 'package:merawala_portfolio/utils/assets.dart';
 
 class IntroPage extends StatefulWidget {
@@ -8,6 +12,27 @@ class IntroPage extends StatefulWidget {
 }
 
 class _IntroPageState extends State<IntroPage> {
+  PDFDocument _doc;
+  bool _loading;
+
+  _getDoc() async {
+    setState(() {
+      _loading = true;
+    });
+    final doc = await PDFDocument.fromAsset(Assets.pdfPath);
+    setState(() {
+      _doc = doc;
+      _loading = false;
+    });
+  }
+
+  @override
+  // ignore: must_call_super
+  void initState() {
+    // TODO: implement initState
+    _getDoc();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,16 +48,45 @@ class _IntroPageState extends State<IntroPage> {
                         backgroundImage: AssetImage(Assets.profile),
                       ),
                       SizedBox(
+                        height: 30,
+                      ),
+                      Text(
+                        'TechFreak. Guitar.\n Cricket. Music. Nature Lover.',
+                        style: Theme.of(context).textTheme.caption,
+                        textScaleFactor: 2,
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
                         height: 100,
                       ),
-                      Text("Hello I'm Rohit!",
-                          style: Theme.of(context).textTheme.headline1),
+                      Text(
+                        "Hello, I'm Rohit!",
+                        textScaleFactor: 2,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.black87,
+                          fontWeight: FontWeight.w200,
+                        ),
+                      ),
+                      RotateAnimatedTextKit(
+                        text: [
+                          'Flutter',
+                          'Dart',
+                          'Data Science Enthusiast',
+                          'Python',
+                        ],
+                        textStyle:
+                            TextStyle(color: Colors.black54, fontSize: 30),
+                        isRepeatingAnimation: true,
+                        repeatForever: true,
+                      ),
                     ])
               : Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         CircleAvatar(
@@ -60,9 +114,10 @@ class _IntroPageState extends State<IntroPage> {
                           "Hello, I'm Rohit!",
                           textScaleFactor: 4,
                           style: TextStyle(
-                              fontSize: 18,
-                              color: Colors.black87,
-                              fontWeight: FontWeight.w200),
+                            fontSize: 18,
+                            color: Colors.black87,
+                            fontWeight: FontWeight.w200,
+                          ),
                         ),
                         SizedBox(height: 28),
                         RotateAnimatedTextKit(
@@ -76,6 +131,42 @@ class _IntroPageState extends State<IntroPage> {
                           isRepeatingAnimation: true,
                           repeatForever: true,
                         ),
+                        SizedBox(height: 40),
+                        Container(
+                          height: 80,
+                          width: 180,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(35.0),
+                          ),
+                          padding: EdgeInsets.all(10),
+                          child: InkWell(
+                            onTap: () => showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return _loading
+                                      ? Center(
+                                          child: CircularProgressIndicator(),
+                                        )
+                                      : PDFViewer(
+                                          document: _doc,
+                                        );
+                                }),
+                            child: Card(
+                              color: Colors.black87,
+                              child: Center(
+                                child: Text(
+                                  'View Resume',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontFamily: 'IndieFlower'),
+                                ),
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(35.0),
+                              ),
+                            ),
+                          ),
+                        )
                       ],
                     ),
                   ],
@@ -84,4 +175,17 @@ class _IntroPageState extends State<IntroPage> {
       ),
     );
   }
+}
+
+Widget showPDF(context, doc) {
+  return Stack(
+    children: [
+      BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+      ),
+      PDFViewer(
+        document: doc,
+      )
+    ],
+  );
 }

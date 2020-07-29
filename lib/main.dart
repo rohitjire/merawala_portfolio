@@ -19,7 +19,6 @@ class _MyAppState extends State<MyApp> {
         theme: ThemeData(
           fontFamily: 'Montserrat',
           backgroundColor: Colors.black12,
-          hoverColor: Colors.black87,
         ),
         debugShowCheckedModeBanner: false,
         home: HomePage());
