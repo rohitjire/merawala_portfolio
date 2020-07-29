@@ -1,10 +1,10 @@
-import 'dart:html';
 import 'dart:ui';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
 import 'package:merawala_portfolio/utils/assets.dart';
+import 'package:merawala_portfolio/widgets/responsive_widget.dart';
 
 class IntroPage extends StatefulWidget {
   @override
@@ -37,140 +37,143 @@ class _IntroPageState extends State<IntroPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SingleChildScrollView(
-          child: MediaQuery.of(context).size.width < 600
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+        child: ResponsiveWidget(
+          largeScreen: Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                      CircleAvatar(
-                        radius: 120,
-                        backgroundImage: AssetImage(Assets.profile),
-                      ),
-                      SizedBox(
-                        height: 30,
-                      ),
-                      Text(
-                        'TechFreak. Guitar.\n Cricket. Music. Nature Lover.',
-                        style: Theme.of(context).textTheme.caption,
-                        textScaleFactor: 2,
-                        textAlign: TextAlign.center,
-                      ),
-                      SizedBox(
-                        height: 100,
-                      ),
-                      Text(
-                        "Hello, I'm Rohit!",
-                        textScaleFactor: 2,
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.black87,
-                          fontWeight: FontWeight.w200,
-                        ),
-                      ),
-                      RotateAnimatedTextKit(
-                        text: [
-                          'Flutter',
-                          'Dart',
-                          'Data Science Enthusiast',
-                          'Python',
-                        ],
-                        textStyle:
-                            TextStyle(color: Colors.black54, fontSize: 30),
-                        isRepeatingAnimation: true,
-                        repeatForever: true,
-                      ),
-                    ])
-              : Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        CircleAvatar(
-                          radius: 120,
-                          backgroundImage: AssetImage(Assets.profile),
-                        ),
-                        SizedBox(
-                          height: 30,
-                        ),
-                        Text(
-                          'TechFreak. Guitar.\n Cricket. Music. Nature Lover.',
-                          style: Theme.of(context).textTheme.caption,
-                          textScaleFactor: 2,
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
+                    CircleAvatar(
+                      radius: 120,
+                      backgroundImage: AssetImage(Assets.profile),
                     ),
                     SizedBox(
-                      height: 100,
+                      height: 30,
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        Text(
-                          "Hello, I'm Rohit!",
-                          textScaleFactor: 4,
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.black87,
-                            fontWeight: FontWeight.w200,
-                          ),
-                        ),
-                        SizedBox(height: 28),
-                        RotateAnimatedTextKit(
-                          text: [
-                            'Flutter',
-                            'Dart',
-                            'Data Science Enthusiast',
-                            'Python',
-                          ],
-                          textStyle: Theme.of(context).textTheme.headline4,
-                          isRepeatingAnimation: true,
-                          repeatForever: true,
-                        ),
-                        SizedBox(height: 40),
-                        Container(
-                          height: 80,
-                          width: 180,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(35.0),
-                          ),
-                          padding: EdgeInsets.all(10),
-                          child: InkWell(
-                            onTap: () => showDialog(
-                                context: context,
-                                builder: (BuildContext context) {
-                                  return _loading
-                                      ? Center(
-                                          child: CircularProgressIndicator(),
-                                        )
-                                      : PDFViewer(
-                                          document: _doc,
-                                        );
-                                }),
-                            child: Card(
-                              color: Colors.black87,
-                              child: Center(
-                                child: Text(
-                                  'View Resume',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontFamily: 'IndieFlower'),
-                                ),
-                              ),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(35.0),
-                              ),
-                            ),
-                          ),
-                        )
-                      ],
+                    Text(
+                      'TechFreak. Guitar.\n Cricket. Music. Nature Lover.',
+                      style: Theme.of(context).textTheme.caption,
+                      textScaleFactor: 2,
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),
+                SizedBox(
+                  height: 100,
+                ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Hello, I'm Rohit!",
+                      textScaleFactor: 4,
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.black87,
+                        fontWeight: FontWeight.w200,
+                      ),
+                    ),
+                    SizedBox(height: 28),
+                    RotateAnimatedTextKit(
+                      text: [
+                        'Flutter',
+                        'Dart',
+                        'Data Science Enthusiast',
+                        'Python',
+                      ],
+                      textStyle: Theme.of(context).textTheme.headline4,
+                      isRepeatingAnimation: true,
+                      repeatForever: true,
+                    ),
+                    SizedBox(height: 40),
+                    Container(
+                      height: 80,
+                      width: 180,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(35.0),
+                      ),
+                      padding: EdgeInsets.all(10),
+                      child: InkWell(
+                        onTap: () => showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return _loading
+                                  ? Center(
+                                      child: CircularProgressIndicator(),
+                                    )
+                                  : PDFViewer(
+                                      document: _doc,
+                                    );
+                            }),
+                        child: Card(
+                          color: Colors.black87,
+                          child: Center(
+                            child: Text(
+                              'View Resume',
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontFamily: 'IndieFlower'),
+                            ),
+                          ),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(35.0),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
+          smallScreen: SingleChildScrollView(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CircleAvatar(
+                  radius: 120,
+                  backgroundImage: AssetImage(Assets.profile),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  'TechFreak. Guitar.\n Cricket. Music. Nature Lover.',
+                  style: Theme.of(context).textTheme.caption,
+                  textScaleFactor: 2,
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 100,
+                ),
+                Text(
+                  "Hello, I'm Rohit!",
+                  textScaleFactor: 2,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Colors.black87,
+                    fontWeight: FontWeight.w200,
+                  ),
+                ),
+                RotateAnimatedTextKit(
+                  text: [
+                    'Flutter',
+                    'Dart',
+                    'Data Science Enthusiast',
+                    'Python',
+                  ],
+                  textStyle: TextStyle(color: Colors.black54, fontSize: 30),
+                  isRepeatingAnimation: true,
+                  repeatForever: true,
+                ),
+              ],
+            ),
+          ),
         ),
       ),
     );
