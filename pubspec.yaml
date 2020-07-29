@@ -48,16 +48,26 @@ flutter:
 
   assets:
     - assets/
+    - assets/fonts/
   #   - images/a_dot_ham.jpeg
 
 
   fonts:
     - family: Montserrat
       fonts:
-        - asset: assets/Montserrat-Black.ttf
+        - asset: assets/fonts/Montserrat-Black.ttf
     - family: IndieFlower
       fonts:
-        - asset: assets/IndieFlower-Regular.ttf
+        - asset: assets/fonts/IndieFlower-Regular.ttf
+    - family: ProductSans
+      fonts:
+        - asset: assets/fonts/ProductSans-Regular.ttf
+    - family: GoogleSans
+      fonts:
+        - asset: assets/fonts/GoogleSans-Regular.ttf
+    - family: Lauren
+      fonts:
+        - asset: assets/fonts/LaurenPremier.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

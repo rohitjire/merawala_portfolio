@@ -6,4 +6,5 @@ class Assets {
   static const medium = 'assets/medium.png';
   static const twitter = 'assets/twitter.png';
   static const pdfPath = 'assets/Resume.pdf';
+  static const flutterLogo = 'assets/FlutterLogo.png';
 }

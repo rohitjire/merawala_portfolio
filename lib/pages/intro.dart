@@ -179,16 +179,3 @@ class _IntroPageState extends State<IntroPage> {
     );
   }
 }
-
-Widget showPDF(context, doc) {
-  return Stack(
-    children: [
-      BackdropFilter(
-        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-      ),
-      PDFViewer(
-        document: doc,
-      )
-    ],
-  );
-}
