@@ -3,4 +3,5 @@ class Constants {
   static const INSTAGRAM_LINK = 'https://www.instagram.com/__rohiittt__/';
   static const LINKEDIN_LINK = 'https://www.linkedin.com/in/rohitjire/';
   static const TWITTER_LINK = 'https://twitter.com/Rohit_5141';
+  static const RESUME_LINK = 'https://twitter.com/Rohit_5141';
 }

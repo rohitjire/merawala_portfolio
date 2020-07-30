@@ -15,7 +15,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'MERAWALA PORTFOLIO',
+        title: 'Rohit Jire!',
         theme: ThemeData(
           fontFamily: 'Montserrat',
           backgroundColor: Colors.black12,

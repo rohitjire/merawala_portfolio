@@ -74,7 +74,8 @@ class _IntroPageState extends State<IntroPage> {
                       style: TextStyle(
                         fontSize: 18,
                         color: Colors.black87,
-                        fontWeight: FontWeight.w200,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'GoogleSans',
                       ),
                     ),
                     SizedBox(height: 28),
