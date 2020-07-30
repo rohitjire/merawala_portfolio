@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:merawala_portfolio/utils/constants.dart';
 
 import '../utils/assets.dart';
 import '../widgets/project_widget.dart';
@@ -20,15 +21,8 @@ class _ProjectsPageState extends State<ProjectsPage> {
               projectLogo: Assets.flutterLogo,
               description:
                   'FlashChat is a basic messaging app which for one to one users',
+              projectLink: Constants.FLASHCHAT_LINK,
             ),
-//            SizedBox(
-//              height: 20,
-//            ),
-//            ProjectWidget(),
-//            SizedBox(
-//              height: 20,
-//            ),
-//            ProjectWidget(),
             SizedBox(
               height: 60,
             ),

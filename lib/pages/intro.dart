@@ -1,9 +1,11 @@
+import 'dart:html' as html;
 import 'dart:ui';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_plugin_pdf_viewer/flutter_plugin_pdf_viewer.dart';
 import 'package:merawala_portfolio/utils/assets.dart';
+import 'package:merawala_portfolio/utils/constants.dart';
 import 'package:merawala_portfolio/widgets/responsive_widget.dart';
 
 class IntroPage extends StatefulWidget {
@@ -99,17 +101,8 @@ class _IntroPageState extends State<IntroPage> {
                       ),
                       padding: EdgeInsets.all(10),
                       child: InkWell(
-                        onTap: () => showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return _loading
-                                  ? Center(
-                                      child: CircularProgressIndicator(),
-                                    )
-                                  : PDFViewer(
-                                      document: _doc,
-                                    );
-                            }),
+                        onTap: () =>
+                            html.window.open(Constants.RESUME_LINK, 'Resume'),
                         child: Card(
                           color: Colors.black87,
                           child: Center(

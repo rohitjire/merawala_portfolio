@@ -1,11 +1,15 @@
+import 'dart:html' as html;
+
 import 'package:flutter/material.dart';
 
 class ProjectWidget extends StatelessWidget {
   final String projectName;
   final String description;
   final String projectLogo;
+  final String projectLink;
 
-  ProjectWidget({this.projectName, this.description, this.projectLogo});
+  ProjectWidget(
+      {this.projectName, this.description, this.projectLogo, this.projectLink});
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +17,7 @@ class ProjectWidget extends StatelessWidget {
       height: 130,
       width: 350,
       child: InkWell(
+        onTap: () => html.window.open(projectLink, projectName),
         child: Card(
           child: Padding(
             padding: const EdgeInsets.all(10),
